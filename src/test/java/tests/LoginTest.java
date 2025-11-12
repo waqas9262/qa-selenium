@@ -1,7 +1,6 @@
 package tests;
 
 import core.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
