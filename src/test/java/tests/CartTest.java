@@ -1,13 +1,16 @@
 package tests;
 
+import core.ExtentTestListener;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import pages.CartPage;
 import pages.LoginPage;
 import core.BaseTest;
 import org.testng.annotations.Test;
 
 // Validates cart interactions including adding and removing items.
+@Listeners(ExtentTestListener.class)
 public class CartTest extends BaseTest {
 
     @Test

@@ -1,18 +1,25 @@
 package core;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import core.ConfigManager;
+import com.aventstack.extentreports.ExtentTest;
+import core.ExtentManager;
 
 // Base test class providing browser setup and teardown for all tests.
 public class BaseTest {
     protected WebDriver driver;
+    protected static ExtentTest test;
 
     @BeforeMethod
     public void setUp() {
+
+        test = ExtentManager.getReporter().createTest(this.getClass().getSimpleName());
+        
         String browser = ConfigManager.getBrowser();
 
         if (browser.equalsIgnoreCase("chrome")) {

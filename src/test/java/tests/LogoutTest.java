@@ -1,11 +1,15 @@
 package tests;
 
 import core.BaseTest;
+import core.ExtentTestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.MenuPage;
 
 // Validates that a logged-in user can successfully log out.
+@Listeners(ExtentTestListener.class)
+
 public class LogoutTest extends BaseTest {
 
     @Test

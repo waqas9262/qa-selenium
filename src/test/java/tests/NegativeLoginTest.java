@@ -1,11 +1,14 @@
 package tests;
 
+import core.ExtentTestListener;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import pages.NegativeLoginPage;
 import core.BaseTest;
 import org.testng.annotations.Test;
 
 // Validates negative login scenarios such as invalid and empty credentials.
+@Listeners(ExtentTestListener.class)
 public class NegativeLoginTest extends BaseTest {
 
     @Test

@@ -1,12 +1,15 @@
 package tests;
 
 import core.BaseTest;
+import core.ExtentTestListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.CheckoutPage;
 import pages.LoginPage;
 
 // End-to-end checkout test from login to order completion.
+@Listeners(ExtentTestListener.class)
 public class CheckoutTest extends BaseTest {
 
     @Test
