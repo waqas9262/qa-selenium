@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import core.ConfigManager;
+import core.LoggerManager;
 
 // Page Object for login-related interactions.
 public class LoginPage {
@@ -18,14 +19,17 @@ public class LoginPage {
     private final By loginButton = By.id("login-button");
 
     public void enterUsername(String username) {
+        LoggerManager.getLogger().info("Entering username");
         driver.findElement(usernameInput).sendKeys(username);
     }
 
     public void enterPassword(String password) {
+        LoggerManager.getLogger().info("Entering password");
         driver.findElement(passwordInput).sendKeys(password);
     }
 
     public void clickLogin() {
+        LoggerManager.getLogger().info("Clicking login button");
         driver.findElement(loginButton).click();
     }
 

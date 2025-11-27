@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import core.LoggerManager;
 
 // Page Object for cart-related interactions.
 public class CartPage {
@@ -18,18 +19,22 @@ public class CartPage {
     private final By removeItem = By.id("remove-sauce-labs-backpack");
 
     public void addBackpackToCart() {
+        LoggerManager.getLogger().info("Adding backpack to cart");
         driver.findElement(addBackpack).click();
     }
 
     public void addBikelightToCart() {
+        LoggerManager.getLogger().info("Adding bike light to cart");
         driver.findElement(addBikelight).click();
     }
 
     public void openCart() {
+        LoggerManager.getLogger().info("Opening cart");
         driver.findElement(cartIcon).click();
     }
 
     public void setRemoveItem() {
+        LoggerManager.getLogger().info("Removing item from cart");
         driver.findElement(removeItem).click();
     }
 }

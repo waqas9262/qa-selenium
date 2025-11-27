@@ -29,7 +29,10 @@ public class BaseTest {
             throw new RuntimeException("Unsupported browser: " + browser);
         }
 
+        LoggerManager.getLogger().info("Browser started: " + browser);
+
         driver.manage().window().maximize();
+        LoggerManager.getLogger().info("Navigating to: " + ConfigManager.getBaseUrl());
         driver.get(ConfigManager.getBaseUrl());
     }
 

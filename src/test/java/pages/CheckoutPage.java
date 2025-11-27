@@ -1,5 +1,6 @@
 package pages;
 
+import core.LoggerManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,26 +21,32 @@ public class CheckoutPage {
     private final By finishButton = By.id("finish");
 
     public void clickCheckout() {
+        LoggerManager.getLogger().info("Clicking checkout button");
         driver.findElement(checkOutButton).click();
     }
 
     public void enterFirstname(String firstname) {
+        LoggerManager.getLogger().info("Entering first name");
         driver.findElement(firstNameInput).sendKeys(firstname);
     }
 
     public void enterLastname(String lastname) {
+        LoggerManager.getLogger().info("Entering last name");
         driver.findElement(lastNameInput).sendKeys(lastname);
     }
 
     public void enterPostcode(String postcode) {
+        LoggerManager.getLogger().info("Entering postal code");
         driver.findElement(postalCodeInput).sendKeys(postcode);
     }
 
     public void clickContinue() {
+        LoggerManager.getLogger().info("Clicking continue button");
         driver.findElement(continueButton).click();
     }
 
     public void clickFinish() {
+        LoggerManager.getLogger().info("Clicking finish button");
         driver.findElement(finishButton).click();
     }
 
