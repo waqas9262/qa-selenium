@@ -5,19 +5,15 @@ import pages.InventoryPage;
 import core.BaseTest;
 import org.testng.annotations.Test;
 
+// Validates basic interactions on the inventory page.
 public class InventoryTest extends BaseTest {
 
     @Test
     public void inventoryTest() {
 
-        // Open website
-        driver.get("https://www.saucedemo.com/");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginWithDefaultUser();
 
-        // Login using Page Object
-        LoginPage login = new LoginPage(driver);
-        login.login("standard_user", "secret_sauce");
-
-        // Work with Inventory page
         InventoryPage inventory = new InventoryPage(driver);
         inventory.openMenu();
         inventory.addBackpackToCart();

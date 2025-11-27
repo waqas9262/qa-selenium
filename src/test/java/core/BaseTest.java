@@ -5,23 +5,36 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import core.ConfigManager;
 
+// Base test class providing browser setup and teardown for all tests.
 public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
-        // Set up ChromeDriver automatically using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        String browser = ConfigManager.getBrowser();
 
-        // Maximize the browser window
+        if (browser.equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            throw new RuntimeException("Firefox not supported yet");
+
+        } else if (browser.equalsIgnoreCase("edge")) {
+            throw new RuntimeException("Edge not supported yet");
+
+        } else {
+            throw new RuntimeException("Unsupported browser: " + browser);
+        }
+
         driver.manage().window().maximize();
+        driver.get(ConfigManager.getBaseUrl());
     }
 
     @AfterMethod
     public void tearDown() {
-        // Close the browser after each test
         if (driver != null) {
             driver.quit();
         }

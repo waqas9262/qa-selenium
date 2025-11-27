@@ -4,16 +4,13 @@ import core.BaseTest;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
+// Verifies successful login with default credentials.
 public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest() {
 
-        // Step 1: Open website
-        driver.get("https://www.saucedemo.com/");
-
-        LoginPage login = new LoginPage(driver);
-        login.login("standard_user", "secret_sauce");
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginWithDefaultUser();
     }
 }

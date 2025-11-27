@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+// Page Object for handling the checkout workflow.
 public class CheckoutPage {
 
     private final WebDriver driver;
@@ -11,7 +12,6 @@ public class CheckoutPage {
         this.driver = driver;
     }
 
-    // Checkout page elements
     private final By checkOutButton = By.id("checkout");
     private final By firstNameInput = By.id("first-name");
     private final By lastNameInput = By.id("last-name");
@@ -19,12 +19,10 @@ public class CheckoutPage {
     private final By continueButton = By.id("continue");
     private final By finishButton = By.id("finish");
 
-    // Clicks the checkout button
     public void clickCheckout() {
         driver.findElement(checkOutButton).click();
     }
 
-    // Enters user details
     public void enterFirstname(String firstname) {
         driver.findElement(firstNameInput).sendKeys(firstname);
     }
@@ -37,7 +35,6 @@ public class CheckoutPage {
         driver.findElement(postalCodeInput).sendKeys(postcode);
     }
 
-    // Navigates through checkout steps
     public void clickContinue() {
         driver.findElement(continueButton).click();
     }
@@ -46,7 +43,7 @@ public class CheckoutPage {
         driver.findElement(finishButton).click();
     }
 
-    // Full checkout flow combined
+    // Executes the full checkout sequence.
     public void checkout(String firstname, String lastname, String postcode) {
         clickCheckout();
         enterFirstname(firstname);

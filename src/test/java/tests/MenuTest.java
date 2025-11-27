@@ -5,19 +5,15 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.MenuPage;
 
+// Validates that the menu opens and logout can be triggered.
 public class MenuTest extends BaseTest {
 
     @Test
     public void menuTest() {
 
-        // Step 1: Open the Sauce Demo website
-        driver.get("https://www.saucedemo.com/");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginWithDefaultUser();
 
-        // Step 2: Log in using the login page
-        LoginPage login = new LoginPage(driver);
-        login.login("standard_user", "secret_sauce");
-
-        // Step 3: Open menu and log out
         MenuPage menu = new MenuPage(driver);
         menu.clickMenu();
         menu.clickLogout();
