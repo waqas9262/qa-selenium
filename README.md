@@ -6,6 +6,7 @@ Designed to be clean, scalable, and easy to maintain.
 
 ## 📁 Project Structure
 
+```
 qa-selenium/
 │
 ├── Logs/
@@ -13,6 +14,9 @@ qa-selenium/
 │
 ├── reports/
 │ └── extent-report.html
+│
+├── screenshots/
+│ └── (failure screenshots)
 │
 ├── src/
 │ ├── main/
@@ -28,8 +32,27 @@ qa-selenium/
 │ └── test/
 │ ├── java/
 │ │ ├── core/
+│ │ │ ├── ExtentManager.java
+│ │ │ └── ExtentTestListener.java
+│ │ │
 │ │ ├── pages/
+│ │ │ ├── CartPage.java
+│ │ │ ├── CheckoutPage.java
+│ │ │ ├── InventoryPage.java
+│ │ │ ├── LoginPage.java
+│ │ │ ├── MenuPage.java
+│ │ │ └── NegativeLoginPage.java
+│ │ │
 │ │ ├── tests/
+│ │ │ ├── CartTest.java
+│ │ │ ├── CheckoutTest.java
+│ │ │ ├── DataDrivenLoginTest.java
+│ │ │ ├── InventoryTest.java
+│ │ │ ├── LoginTest.java
+│ │ │ ├── LogoutTest.java
+│ │ │ ├── MenuTest.java
+│ │ │ └── NegativeLoginTest.java
+│ │ │
 │ │ └── utils/
 │ │ └── CSVReader.java
 │ │
@@ -39,6 +62,7 @@ qa-selenium/
 │
 ├── pom.xml
 └── README.md
+```
 
 ## ▶️ How to Run the Tests
 
