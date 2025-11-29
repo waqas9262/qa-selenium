@@ -8,6 +8,10 @@ import pages.CartPage;
 import pages.LoginPage;
 import core.BaseTest;
 import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.time.Duration;
 
 // Validates cart interactions including adding and removing items.
 @Listeners(ExtentTestListener.class)
@@ -20,18 +24,22 @@ public class CartTest extends BaseTest {
         loginPage.loginWithDefaultUser();
 
         CartPage cart = new CartPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         cart.addBackpackToCart();
         cart.addBikelightToCart();
 
-        // Assert cart shows two added items
+        // Wait until cart badge shows 2 items
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("shopping_cart_badge"), "2"));
         String badge = driver.findElement(By.className("shopping_cart_badge")).getText();
         Assert.assertEquals(badge, "2");
 
+        // Open the cart and remove one item
         cart.openCart();
         cart.setRemoveItem();
 
-        // Assert cart updates to one item
+        // Wait until cart badge updates to 1 item
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("shopping_cart_badge"), "1"));
         String badgeAfter = driver.findElement(By.className("shopping_cart_badge")).getText();
         Assert.assertEquals(badgeAfter, "1");
     }
