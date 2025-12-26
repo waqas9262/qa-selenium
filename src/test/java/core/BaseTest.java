@@ -1,5 +1,7 @@
 package core;
 
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,6 +12,7 @@ import core.ConfigManager;
 import core.LoggerManager;
 import com.aventstack.extentreports.ExtentTest;
 import core.ExtentManager;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +47,9 @@ public class BaseTest {
 
             // Optional: run in incognito to avoid saving data between runs
             options.addArguments("--incognito");
+            if (ConfigManager.isHeadless()) {
+                options.addArguments("--headless=new");
+            }
 
             driver = new ChromeDriver(options);
             // ------------------------------------------------------------------------
@@ -52,7 +58,16 @@ public class BaseTest {
             throw new RuntimeException("Firefox not supported yet");
 
         } else if (browser.equalsIgnoreCase("edge")) {
-            throw new RuntimeException("Edge not supported yet");
+
+            WebDriverManager.edgedriver().setup();
+
+            EdgeOptions options = new EdgeOptions();
+            options.addArguments("--incognito");
+            if (ConfigManager.isHeadless()) {
+                options.addArguments("--headless=new");
+            }
+
+            driver = new EdgeDriver(options);
 
         } else {
             throw new RuntimeException("Unsupported browser: " + browser);
