@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
 public class UserApiTest {
 
     @BeforeClass
@@ -19,12 +21,15 @@ public class UserApiTest {
     @Test
     public void getPostTest() {
         given()
+                .log().all()
                 .when()
                 .get("/posts/1")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .body("id", equalTo(1))
-                .body("userId", greaterThan(0));
+                .body("userId", greaterThan(0))
+                .body(matchesJsonSchemaInClasspath("schemas/post-schema.json"));
     }
 
     // 2) POST – create a resource
