@@ -4,6 +4,11 @@ A complete Selenium-based test automation framework built with Java, TestNG, Pag
 testing, logging, and HTML reporting.  
 Designed to be clean, scalable, and easy to maintain.
 
+## Goal
+
+Showcase a production-ready Selenium automation framework with Java, TestNG, POM, data-driven testing, multi-browser and
+headless execution, logging, and reporting.
+
 ## 📁 Project Structure
 
 ```
@@ -87,3 +92,9 @@ After the test run:
 
 - **Execution Logs** are stored at:  
   /Logs/framework.log
+
+## Browser & Headless Configuration
+
+- Browser and headless mode are controlled via `config.properties`
+- Supported browsers: Chrome, Edge
+- Headless execution is useful for CI environments
